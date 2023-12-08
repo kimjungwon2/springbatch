@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class DBJobConfiguration {
+public class JobConfiguration {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
@@ -27,8 +27,7 @@ public class DBJobConfiguration {
                 .build();
     }
 
-    @Bean
-    public Step step1(){
+    private Step step1() {
         return stepBuilderFactory.get("step1")
                 .tasklet(new Tasklet() {
                     @Override
@@ -41,8 +40,8 @@ public class DBJobConfiguration {
                 .build();
     }
 
-    @Bean
-    public Step step2(){
+    private Step step2() {
+
         return stepBuilderFactory.get("step2")
                 .tasklet(new Tasklet() {
                     @Override
